@@ -3,7 +3,6 @@ package com.example.simple_board.post.db;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
