@@ -1,6 +1,8 @@
 package com.example.simple_board.post.db;
 
+import com.example.simple_board.board.db.BoardEntity;
 import com.example.simple_board.reply.db.ReplyEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,7 +21,12 @@ public class PostEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long boardId;
+    // boardId -> boardEntity (객체로 접근)
+    // board - post 무한으로 참조하는 문제 해결
+    @ManyToOne
+    @JsonIgnore
+    @ToString.Exclude
+    private BoardEntity board; // board + _id
 
     private String userName;
 
@@ -40,4 +47,3 @@ public class PostEntity {
     @Transient
     private List<ReplyEntity> replyList = List.of();
 }
-@Transient
